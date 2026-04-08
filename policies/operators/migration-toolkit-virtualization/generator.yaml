@@ -1,0 +1,25 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: mtv-operator-policies
+policyDefaults:
+  namespace: policies
+  remediationAction: enforce
+  policySets:
+    - mtv-operator
+placementBindingDefaults:
+  name: mtv-operator
+policies:
+  - name: mtv-operator
+    remediationAction: enforce
+    manifests:
+      - path: namespace.yaml
+      - path: operatorpolicy.yaml
+  - name: mtv-config
+    manifests:
+      - path: forklift-controller.yaml
+policySets:
+  - name: mtv-operator
+    placement:
+      placementName: virtualization-hosts

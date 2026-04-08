@@ -1,0 +1,23 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: compliance-operator-policies
+policyDefaults:
+  namespace: policies
+  remediationAction: enforce
+  policySets:
+    - compliance-operator
+placementBindingDefaults:
+  name: compliance-operator-binding
+
+policies:
+  - name: compliance-operator
+    manifests:
+      - path: namespace.yaml
+      - path: operatorpolicy.yaml
+
+policySets:
+  - name: compliance-operator
+    placement:
+      placementName: openshift-clusters

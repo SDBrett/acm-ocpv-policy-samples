@@ -1,0 +1,56 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: production-clusters-config
+policyDefaults:
+  namespace: policies
+  policySets:
+    - prod-cluster-configs
+placementBindingDefaults:
+  name: production-cluster-config-binding
+
+policies:
+# Start prod environment config policies
+  - name: oauth-ldap-secret
+    remediationAction: enforce
+    manifests:
+      - path: oauth/ldap-secret.yaml
+ 
+  - name: oauth-config
+    remediationAction: enforce
+    manifests:
+      - path: oauth/oauth.yaml
+      - path: oauth/ca-configmap.yaml
+    dependencies:
+      - name: oauth-ldap-secret
+    ignorePending: true
+ 
+  - name: ldap-sync-config
+    remediationAction: enforce
+    manifests:
+      - path: oauth/ldap-sync-configmap.yaml
+
+  - name: rbac-policies
+    remediationAction: enforce
+    complianceType: mustonlyhave
+    manifests:
+      - path: rbac
+# End prod environment config policies
+# Start Managedclusters
+  - name: managed-clusters-policies
+    remediationAction: enforce
+    manifests:
+      - path: clusters/ocp1/managedcluster.yaml
+      - path: clusters/ocp2/managedcluster.yaml
+    policySets:
+      - active-hub-cluster-config
+# End Managedclusters
+
+policySets:
+  - name: active-hub-cluster-config
+    placement:
+      placementName: active-hub-cluster
+  - name: prod-cluster-configs
+    placement:
+      placementName: production-clusters

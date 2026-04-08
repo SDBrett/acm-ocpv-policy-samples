@@ -1,0 +1,11 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ./acm-configs/
+  - ./acm-placements/
+  - ./cluster-configs/
+  - ./cluster-health/
+  - ./cluster-validations/
+  - ./operators/

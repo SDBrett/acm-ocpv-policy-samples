@@ -1,0 +1,34 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: gen-policy-generator-acm
+policyDefaults:
+  namespace: policies
+  remediationAction: enforce
+  consolidateManifests: false
+  policySets:
+    - acm-operator
+placementBindingDefaults:
+  name: acm-operator-binding
+policies:
+  - name: acm-operator
+    remediationAction: enforce
+    manifests:
+      - path: namespace.yaml
+      - path: operatorpolicy.yaml
+  - name: acm-multiclusterhub
+    remediationAction: enforce
+    manifests:
+      - path: multiclusterhub.yaml
+    dependencies:
+      - name: acm-operator
+        compliance: Compliant
+  - name: managed-cluster-placements
+    remediationAction: enforce
+    manifests:
+      - path: managed-cluster-placements.yaml
+policySets:
+  - name: acm-operator
+    placement:
+      placementName: hub-clusters

@@ -1,0 +1,13 @@
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: ens34-nncp-node06
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: node06.ocp1.net
+  desiredState:
+    interfaces:
+    - name: ens34
+      description: MetalLB interface
+      type: ethernet
+      state: up

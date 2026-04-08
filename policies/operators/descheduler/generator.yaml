@@ -1,0 +1,28 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: descheduler-operator-policies
+policyDefaults:
+  namespace: policies
+  remediationAction: enforce
+  policySets:
+    - descheduler-operator
+placementBindingDefaults:
+  name: descheduler-operator-binding
+
+policies:
+  - name: descheduler-operator
+    manifests:
+      - path: namespace.yaml
+      - path: operatorpolicy.yaml
+  - name: descheduler-config
+    manifests:
+      - path: descheduler.yaml
+    dependencies:
+      - name: descheduler-operator
+        compliance: Compliant
+policySets:
+  - name: descheduler-operator
+    placement:
+      placementName: virtualization-hosts

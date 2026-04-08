@@ -1,0 +1,23 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: vault-secrets-operator-policies
+policyDefaults:
+  namespace: policies
+  remediationAction: enforce
+  policySets:
+    - vault-secrets-operator
+placementBindingDefaults:
+  name: vault-secrets-operator-binding
+
+policies:
+  - name: vault-secrets-operator
+    manifests:
+      - path: namespace.yaml
+      - path: operatorpolicy.yaml
+
+policySets:
+  - name: vault-secrets-operator
+    placement:
+      placementName: openshift-clusters

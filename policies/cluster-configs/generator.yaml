@@ -1,0 +1,70 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: cluster-configs
+policyDefaults:
+  namespace: policies
+  remediationAction: enforce
+
+  categories: []
+  controls: []
+  standards: []
+  policySets:
+    - cluster-configs
+placementBindingDefaults:
+  name: cluster-config-binding
+
+policies:
+  - name: etcd-encryption
+    consolidateManifests: false
+    policySets:
+      - etcd-encryption
+    manifests:
+      - path: etcd-encryption/apiserver.yaml
+      - path: etcd-encryption/health/
+        remediationAction: InformOnly
+        extraDependencies:
+          - name: etcd-encryption
+            kind: ConfigurationPolicy
+            compliance: Compliant
+
+  - name: etcd-backup
+    configurationPolicyAnnotations:
+      policy.open-cluster-management.io/disable-templates: 'true'
+    dependencies:
+      - name: etcd-encryption
+        compliance: Compliant
+    manifests:
+      - path: etcd-backup/
+
+  - name: acm-clusterclaims
+    manifests:
+      - path: clusterclaims/
+
+  - name: ldap-sync
+    manifests:
+      - path: ldap-sync
+    dependencies:
+      - name: oauth-ldap-secret
+    ignorePending: true
+
+  - name: ldap-secret-sync
+    description: Sync LDAP bind password from LDAP secret in policy namespace to openshift-config namespace 
+    manifests:
+      - path: oauth/ldap-secret-sync.yaml
+
+  - name: cluster-network-config
+    manifests:
+      - path: cluster-networking
+
+policySets:
+  - name: cluster-configs
+    placement:
+      placementName: openshift-clusters
+  - name: etcd-encryption
+    placement:
+      placementName: openshift-clusters
+  - name: worker-cluster-configs
+    placement:
+      placementName: workload-clusters    

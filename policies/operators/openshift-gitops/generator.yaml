@@ -1,0 +1,20 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: openshift-gitops
+policyDefaults:
+  namespace: policies
+  remediationAction: enforce
+placementBindingDefaults:
+  name: openshift-gitops
+
+policies:
+  - name: gitops-operator
+    manifests:
+      - path: hub-cluster/argocd-instances/gitops-root
+
+policySets:
+  - name: hub-openshift-gitops
+    placement:
+      placementName: hub-clusters

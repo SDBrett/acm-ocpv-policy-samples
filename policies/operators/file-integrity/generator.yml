@@ -4,7 +4,7 @@ kind: PolicyGenerator
 metadata:
   name: gen-policy-fio
 policyDefaults:
-  namespace: bry-tam-policies
+  namespace: policies
   remediationAction: enforce
   consolidateManifests: false
   policySets:

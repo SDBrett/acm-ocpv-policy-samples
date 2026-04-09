@@ -5,7 +5,6 @@ namespace: policies
 resources:
   - active-hub-clusters.yaml
   - baremetal-clusters.yaml
-  - hitachi-storage-clusters.yaml
   - hub-clusters.yaml
   - model-clusters.yaml
   - odf-clusters.yaml

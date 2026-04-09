@@ -17,14 +17,14 @@ policies:
     manifests:
       - path: oauth/ldap-secret.yaml
  
-  - name: oauth-config
-    remediationAction: enforce
-    manifests:
-      - path: oauth/oauth.yaml
-      - path: oauth/ca-configmap.yaml
-    dependencies:
-      - name: oauth-ldap-secret
-    ignorePending: true
+  # - name: oauth-config
+  #   remediationAction: enforce
+  #   manifests:
+  #     - path: oauth/oauth.yaml
+  #     - path: oauth/ca-configmap.yaml
+  #   dependencies:
+  #     - name: oauth-ldap-secret
+  #   ignorePending: true
  
   - name: ldap-sync-config
     remediationAction: enforce
@@ -38,10 +38,10 @@ policies:
       - path: rbac
 # End prod environment config policies
 # Start Managedclusters
+# Do not include hub cluster managedcluster resources here
   - name: managed-clusters-policies
     remediationAction: enforce
     manifests:
-      - path: clusters/ocp1/managedcluster.yaml
       - path: clusters/ocp2/managedcluster.yaml
     policySets:
       - active-hub-cluster-config

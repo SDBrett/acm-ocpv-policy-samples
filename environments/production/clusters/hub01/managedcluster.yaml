@@ -5,9 +5,9 @@ metadata:
     cloud: BareMetal
     cluster.open-cluster-management.io/clusterset: default
     environment: production
-    name: ocp1
+    name: hub01
     vendor: OpenShift
     hub-role: active
-  name: ocp1
+  name: hub01
 spec:
   hubAcceptsClient: true

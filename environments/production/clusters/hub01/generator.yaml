@@ -2,13 +2,13 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: PolicyGenerator
 metadata:
-  name: ocp1-cluster-config
+  name: hub01-cluster-config
 policyDefaults:
   namespace: policies
   policySets:
-    - ocp1-cluster-config
+    - hub01-cluster-config
 placementBindingDefaults:
-  name: ocp1-cluster-config-binding
+  name: hub01-cluster-config-binding
 
 policies:
   - name: cluster-networking
@@ -16,12 +16,12 @@ policies:
     manifests:
       - path: cluster-networking
 
-  - name: ocp1-cluster-proxy
+  - name: hub01-cluster-proxy
     remediationAction: inform
     manifests:
       - path: cluster-proxy.yaml
 
-  - name: ocp1-odf-configure
+  - name: hub01-odf-configure
     remediationAction: enforce
     dependencies:
       - name: odf-operator
@@ -29,14 +29,19 @@ policies:
     manifests:
       - path: storage
 
-  - name: ocp1-cluster-version
+  - name: hub01-cluster-version
     remediationAction: inform
     policySets:
-      - ocp1-cluster-config
+      - hub01-cluster-config
     manifests:
       - path: cluster-version
 
+  - name: hub01-managed-cluster
+    remediationAction: enforce
+    manifests:
+      - path: managedcluster.yaml
+
 policySets:
-  - name: ocp1-cluster-config
+  - name: hub01-cluster-config
     placement:
-      placementName: ocp1
+      placementName: hub01

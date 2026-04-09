@@ -5,8 +5,8 @@ metadata:
     cloud: BareMetal
     cluster.open-cluster-management.io/clusterset: default
     environment: production
-    name: ocp2 
+    name: ocp2
     vendor: OpenShift
-  name: ocp2 
+  name: ocp2
 spec:
   hubAcceptsClient: true

@@ -8,6 +8,6 @@ roleRef:
   kind: ClusterRole
   name: generate-processors-rbac
 subjects:
-- kind: ServiceAccount
-  name: opentelemetry-operator-controller-manager
-  namespace: openshift-opentelemetry-operator
+  - kind: ServiceAccount
+    name: opentelemetry-operator-controller-manager
+    namespace: openshift-opentelemetry-operator

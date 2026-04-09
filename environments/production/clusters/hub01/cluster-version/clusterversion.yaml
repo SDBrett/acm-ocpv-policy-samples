@@ -9,4 +9,3 @@ spec:
   desiredUpdate:
     force: false
     version: 4.20.0
-

@@ -4,4 +4,4 @@ kind: Kustomization
 
 
 generators:
-  - generator.yml
+  - generator.yaml

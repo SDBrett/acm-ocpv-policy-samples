@@ -30,15 +30,15 @@ policies:
     description: "Install OpenTelemetry Operator"
     remediationAction: enforce
     manifests:
-      - path: namespace.yml
+      - path: namespace.yaml
         name: otel-namespace
 
-      - path: operatorpolicy.yml
+      - path: operatorpolicy.yaml
 
-      - path: clusterrole.yml
+      - path: clusterrole.yaml
         name: otel-clusterrole
 
-      - path: clusterrolebinding.yml
+      - path: clusterrolebinding.yaml
         name: otel-clusterrolebinding
 
 policySets:

@@ -68,8 +68,8 @@ spec:
             - name: etcd-backup-data
               persistentVolumeClaim:
                 claimName: etcd-backup
-            # - name: etcd-backup-data
-            #   emptydir: {}
+          # - name: etcd-backup-data
+          #   emptyDir: {}
           tolerations:
             - key: node-role.kubernetes.io/master
               operator: Exists

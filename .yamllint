@@ -3,5 +3,6 @@ extends: default
 
 rules:
   comments: disable
+  comments-indentation: disable
   document-start: disable
   line-length: disable

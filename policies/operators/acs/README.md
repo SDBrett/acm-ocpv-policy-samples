@@ -14,7 +14,7 @@ ACM Minimal Version: 2.12
 Documentation: [latest](https://docs.redhat.com/en/documentation/red_hat_advanced_cluster_security_for_kubernetes/latest)
 
 ### Breakdown of ACS Policy
-Let's take a look at the various pieces of the Policy as defined in the `generator.yml`.
+Let's take a look at the various pieces of the Policy as defined in the `generator.yaml`.
 
 There are two PolicySets defined; one for the Hub (`acs-operator-hub`) and one for the managed clusters (`acs-operator-manged`).
 
@@ -27,9 +27,9 @@ There are two PolicySets defined; one for the Hub (`acs-operator-hub`) and one f
       - acs-operator-hub
       - acs-operator-managed
     manifests:
-      - path: ns-rhacs-operator.yml
-      - path: ns-stackrox.yml
-      - path: operatorpolicy.yml
+      - path: ns-rhacs-operator.yaml
+      - path: ns-stackrox.yaml
+      - path: operatorpolicy.yaml
 ```
 
 ***acs-central*** policy:
@@ -45,9 +45,9 @@ There are two PolicySets defined; one for the Hub (`acs-operator-hub`) and one f
       - name: acs-operator
         compliance: "Compliant"
     manifests:
-      - path: central/central.yml
-      - path: central/consolelink.yml
-      - path: health/central/central-status.yml
+      - path: central/central.yaml
+      - path: central/consolelink.yaml
+      - path: health/central/central-status.yaml
         remediationAction: InformOnly
         extraDependencies:
           - name: acs-central
@@ -68,10 +68,10 @@ There are two PolicySets defined; one for the Hub (`acs-operator-hub`) and one f
       - name: acs-central
         compliance: "Compliant"
     manifests:
-      - path: central/init-bundle/serviceaccount.yml
-      - path: central/init-bundle/role.yml
-      - path: central/init-bundle/rolebinding.yml
-      - path: central/init-bundle/job.yml
+      - path: central/init-bundle/serviceaccount.yaml
+      - path: central/init-bundle/role.yaml
+      - path: central/init-bundle/rolebinding.yaml
+      - path: central/init-bundle/job.yaml
         extraDependencies:
           - name: acs-central-init-bundle
             kind: ConfigurationPolicy
@@ -97,10 +97,10 @@ There are two PolicySets defined; one for the Hub (`acs-operator-hub`) and one f
       - name: acs-central-init-bundle
         compliance: "Compliant"
     manifests:
-      - path: health/central/init-bundle/sensor-tls-cert.yml
-      - path: central/init-bundle/expired-sensor-tls.yml
+      - path: health/central/init-bundle/sensor-tls-cert.yaml
+      - path: central/init-bundle/expired-sensor-tls.yaml
         remediationAction: InformOnly
-      - path: sensor/securedcluster.yml
+      - path: sensor/securedcluster.yaml
         extraDependencies:
           - name: acs-central-init-bundle-cert2
             kind: ConfigurationPolicy
@@ -121,10 +121,10 @@ There are two PolicySets defined; one for the Hub (`acs-operator-hub`) and one f
       - name: acs-central-init-bundle-cert
         compliance: "NonCompliant"
     manifests:
-      - path: central/init-bundle/expired-admission-control-tls.yml
-      - path: central/init-bundle/expired-collector-tls.yml
-      - path: central/init-bundle/expired-sensor-tls.yml
-      - path: central/init-bundle/job.yml
+      - path: central/init-bundle/expired-admission-control-tls.yaml
+      - path: central/init-bundle/expired-collector-tls.yaml
+      - path: central/init-bundle/expired-sensor-tls.yaml
+      - path: central/init-bundle/job.yaml
         extraDependencies:
           - name: acs-central-expired-certs
             kind: ConfigurationPolicy
@@ -150,7 +150,7 @@ There are two PolicySets defined; one for the Hub (`acs-operator-hub`) and one f
       - name: acs-central-init-bundle-cert
         compliance: "Compliant"
     manifests:
-      - path: sensor/sensor-sync-tls-certs.yml
+      - path: sensor/sensor-sync-tls-certs.yaml
 ```
 
 ***acs-sensor*** policy:
@@ -161,10 +161,10 @@ There are two PolicySets defined; one for the Hub (`acs-operator-hub`) and one f
     policySets:
       - acs-operator-managed
     manifests:
-      - path: sensor/propagate-admission-control-tls.yml
-      - path: sensor/propagate-collector-tls.yml
-      - path: sensor/propagate-sensor-tls.yml
-      - path: sensor/securedcluster.yml
+      - path: sensor/propagate-admission-control-tls.yaml
+      - path: sensor/propagate-collector-tls.yaml
+      - path: sensor/propagate-sensor-tls.yaml
+      - path: sensor/securedcluster.yaml
         extraDependencies:
           - name: acs-sensor
             kind: ConfigurationPolicy

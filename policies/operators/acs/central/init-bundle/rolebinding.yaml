@@ -9,6 +9,6 @@ roleRef:
   kind: Role
   name: create-cluster-init
 subjects:
-- kind: ServiceAccount
-  name: create-cluster-init
-  namespace: stackrox
+  - kind: ServiceAccount
+    name: create-cluster-init
+    namespace: stackrox

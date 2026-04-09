@@ -11,7 +11,7 @@ spec:
     {{- $cVer := (lookup "config.openshift.io/v1" "ClusterVersion" "" "version") }}
     {{- $desiredVersion := (dig "desiredUpdate" "version" ($cVer.status.desired.version) $cVer.spec) }}
     {{/* ##  Exclude operators that are not real ClusterOperators  ## */}}
-    {{- $excludedClusterOperators := list 
+    {{- $excludedClusterOperators := list
                                           "cert-manager" }}
     {{/* ## Loop through the ClusterOperators to ensure they are healthy  ## */}}
     {{- range $cOp := (lookup "config.openshift.io/v1" "ClusterOperator" "" "").items }}

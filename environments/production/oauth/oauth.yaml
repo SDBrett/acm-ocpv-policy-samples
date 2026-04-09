@@ -5,7 +5,7 @@ metadata:
   name: cluster
 spec:
   identityProviders:
-    - name: 
+    - name:
       mappingMethod: claim
       type: LDAP
       ldap:

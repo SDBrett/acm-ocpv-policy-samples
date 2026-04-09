@@ -26,4 +26,4 @@ spec:
   operatorGroup:
     name: file-integrity-operator
     targetNamespaces:
-    - openshift-file-integrity
+      - openshift-file-integrity

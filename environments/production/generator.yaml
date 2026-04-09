@@ -11,12 +11,12 @@ placementBindingDefaults:
   name: production-cluster-config-binding
 
 policies:
-# Start prod environment config policies
+  # Start prod environment config policies
   - name: oauth-ldap-secret
     remediationAction: enforce
     manifests:
       - path: oauth/ldap-secret.yaml
- 
+
   # - name: oauth-config
   #   remediationAction: enforce
   #   manifests:
@@ -25,7 +25,7 @@ policies:
   #   dependencies:
   #     - name: oauth-ldap-secret
   #   ignorePending: true
- 
+
   - name: ldap-sync-config
     remediationAction: enforce
     manifests:
@@ -36,17 +36,17 @@ policies:
     complianceType: mustonlyhave
     manifests:
       - path: rbac
-# End prod environment config policies
-# Start Managedclusters
-# Do not include hub cluster managedcluster resources here
+  # End prod environment config policies
+  # Start Managedclusters
+  # Do not include hub cluster managedcluster resources here
   - name: managed-clusters-policies
     remediationAction: enforce
     manifests:
       - path: clusters/ocp2/managedcluster.yaml
     policySets:
       - active-hub-cluster-config
-# End Managedclusters
 
+# End Managedclusters
 policySets:
   - name: active-hub-cluster-config
     placement:

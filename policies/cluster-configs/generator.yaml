@@ -50,7 +50,7 @@ policies:
     ignorePending: true
 
   - name: ldap-secret-sync
-    description: Sync LDAP bind password from LDAP secret in policy namespace to openshift-config namespace 
+    description: Sync LDAP bind password from LDAP secret in policy namespace to openshift-config namespace
     manifests:
       - path: oauth/ldap-secret-sync.yaml
 
@@ -67,4 +67,4 @@ policySets:
       placementName: openshift-clusters
   - name: worker-cluster-configs
     placement:
-      placementName: workload-clusters    
+      placementName: workload-clusters

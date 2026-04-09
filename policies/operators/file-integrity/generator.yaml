@@ -30,18 +30,18 @@ policies:
     description: "Installs file-integrity Operator"
     remediationAction: enforce
     manifests:
-      - path: namespace.yml
+      - path: namespace.yaml
         name: fio-namespace
 
-      - path: operatorpolicy.yml
+      - path: operatorpolicy.yaml
 
-      - path: fileintegrity.yml
+      - path: fileintegrity.yaml
         name: fio-fileintegrity
 
-      - path: fileintegritynodestatus-cleaner.yml
+      - path: fileintegritynodestatus-cleaner.yaml
         name: fio-nodestatus-cleaner
 
-      - path: health/fileintegritynodestatus-failed.yml
+      - path: health/fileintegritynodestatus-failed.yaml
         name: fileintegritynodestatus-failed
         remediationAction: InformOnly
 policySets:

@@ -36,13 +36,13 @@ policies:
       - acs-operator-hub
       - acs-operator-managed
     manifests:
-      - path: ns-rhacs-operator.yml
+      - path: ns-rhacs-operator.yaml
         name: acs-operator-namespace
 
-      - path: ns-stackrox.yml
+      - path: ns-stackrox.yaml
         name: stackrox-namespace
 
-      - path: operatorpolicy.yml
+      - path: operatorpolicy.yaml
 
 
   - name: acs-central
@@ -54,13 +54,13 @@ policies:
       - name: acs-operator
         compliance: "Compliant"
     manifests:
-      - path: central/central.yml
+      - path: central/central.yaml
         name: stackrox-central-services
 
-      - path: central/consolelink.yml
+      - path: central/consolelink.yaml
         name: acs-consolelink
 
-      - path: health/central/central-status.yml
+      - path: health/central/central-status.yaml
         name: acs-central-status
         remediationAction: InformOnly
         severity: high
@@ -79,16 +79,16 @@ policies:
       - name: acs-central
         compliance: "Compliant"
     manifests:
-      - path: central/init-bundle/serviceaccount.yml
+      - path: central/init-bundle/serviceaccount.yaml
         name: create-cluster-init-serviceaccount
 
-      - path: central/init-bundle/role.yml
+      - path: central/init-bundle/role.yaml
         name: create-cluster-init-role
 
-      - path: central/init-bundle/rolebinding.yml
+      - path: central/init-bundle/rolebinding.yaml
         name: create-cluster-init-rolebinding
 
-      - path: central/init-bundle/job.yml
+      - path: central/init-bundle/job.yaml
         name: create-cluster-init-job
         extraDependencies:
           - name: create-cluster-init-serviceaccount
@@ -111,14 +111,14 @@ policies:
       - name: acs-central-init-bundle
         compliance: "Compliant"
     manifests:
-      - path: health/central/init-bundle/sensor-tls-cert.yml
+      - path: health/central/init-bundle/sensor-tls-cert.yaml
         name: acs-bundle-certificates
 
-      - path: central/init-bundle/expired-sensor-tls.yml
+      - path: central/init-bundle/expired-sensor-tls.yaml
         remediationAction: InformOnly
         name: acs-cert-sensor-tls
 
-      - path: sensor/securedcluster.yml
+      - path: sensor/securedcluster.yaml
         extraDependencies:
           - name: acs-cert-sensor-tls
             kind: ConfigurationPolicy
@@ -137,16 +137,16 @@ policies:
     ## ignorePending prevents the NotCompliant dependency from causing this policy to always report as pending
     ignorePending: true
     manifests:
-      - path: central/init-bundle/expired-admission-control-tls.yml
+      - path: central/init-bundle/expired-admission-control-tls.yaml
         name: expired-admission-control-tls
 
-      - path: central/init-bundle/expired-collector-tls.yml
+      - path: central/init-bundle/expired-collector-tls.yaml
         name: expired-collector-tls
 
-      - path: central/init-bundle/expired-sensor-tls.yml
+      - path: central/init-bundle/expired-sensor-tls.yaml
         name: expired-sensor-tls
 
-      - path: central/init-bundle/job.yml
+      - path: central/init-bundle/job.yaml
         name: expired-init-bundle-job
         extraDependencies:
           - name: expired-admission-control-tls
@@ -169,7 +169,7 @@ policies:
       - name: acs-central-init-bundle-cert
         compliance: "Compliant"
     manifests:
-      - path: sensor/sensor-sync-tls-certs.yml
+      - path: sensor/sensor-sync-tls-certs.yaml
         name: sensor-sync-tls-certs
 
   - name: acs-sensor
@@ -178,16 +178,16 @@ policies:
     policySets:
       - acs-operator-managed
     manifests:
-      - path: sensor/propagate-admission-control-tls.yml
+      - path: sensor/propagate-admission-control-tls.yaml
         name: propagate-admission-control-tls
 
-      - path: sensor/propagate-collector-tls.yml
+      - path: sensor/propagate-collector-tls.yaml
         name: propagate-collector-tls
 
-      - path: sensor/propagate-sensor-tls.yml
+      - path: sensor/propagate-sensor-tls.yaml
         name: propagate-sensor-tls
 
-      - path: sensor/securedcluster.yml
+      - path: sensor/securedcluster.yaml
         name: managed-securedcluster
         extraDependencies:
           - name: propagate-admission-control-tls

@@ -7,7 +7,7 @@ spec:
     kubernetes.io/hostname: node05.ocp1.net
   desiredState:
     interfaces:
-    - name: ens34
-      description: MetalLB interface
-      type: ethernet
-      state: up
+      - name: ens34
+        description: MetalLB interface
+        type: ethernet
+        state: up

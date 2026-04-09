@@ -12,8 +12,8 @@ Documentation: [latest](https://docs.redhat.com/en/documentation/workload_availa
 #### **Policy layout**
 |File path    |Description              |
 |-------------|-------------------------|
-|./-operatorpolicy.yml|ACM `OperatorPolicy` defining how to install each operator|
-|./node-remediation-console.yml|OCP Console plugin to add Node Remediation to the UI|
+|./-operatorpolicy.yaml|ACM `OperatorPolicy` defining how to install each operator|
+|./node-remediation-console.yaml|OCP Console plugin to add Node Remediation to the UI|
 |./far-nhc-remediation|Example using NHC with FAR to taint nodes so workloads reschedule quickly and MDO to recreate the node|
 |./snr-nhc-remediation|Example using NHC with SNR to recover the workloads and MDO to recreate the node|
 

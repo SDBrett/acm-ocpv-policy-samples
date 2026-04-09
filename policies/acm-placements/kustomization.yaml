@@ -6,12 +6,11 @@ resources:
   - active-hub-clusters.yaml
   - baremetal-clusters.yaml
   - hub-clusters.yaml
-  - model-clusters.yaml
+  - non-production-clusters.yaml
   - odf-clusters.yaml
   - openshift-clusters.yaml
   - passive-hub-clusters.yaml
   - production-clusters.yaml
-  - sandbox-clusters.yaml
   - self-remediation-clusters.yaml
   - virtualization-host-clusters.yaml
   - workload-clusters.yaml

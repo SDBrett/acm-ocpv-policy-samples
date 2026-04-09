@@ -2,7 +2,7 @@
 apiVersion: cluster.open-cluster-management.io/v1beta1
 kind: Placement
 metadata:
-  name: sandbox-clusters
+  name: non-production-clusters
 spec:
   tolerations:
     - key: cluster.open-cluster-management.io/unreachable
@@ -16,4 +16,4 @@ spec:
             - key: environment
               operator: In
               values:
-                - sandbox
+                - non-production

@@ -13,5 +13,7 @@ spec:
     - requiredClusterSelector:
         labelSelector:
           matchExpressions:
-            - key: hub-role
-              operator: Exists
+            - key: local-cluster
+              operator: In
+              values:
+                - "true"

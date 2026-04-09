@@ -27,4 +27,4 @@ policies:
 policySets:
   - name: acm-alerts-placements
     placement:
-      placementName: "ft-acm-hub--active"
+      placementName: active-hub-cluster
